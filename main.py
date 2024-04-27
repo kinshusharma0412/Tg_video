@@ -29,7 +29,7 @@ logging.basicConfig(
     handlers=[
         TelegramLogHandler(
             token=BOT_TOKEN, 
-            log_chat_id= Config.LOG_CH, 
+            log_chat_id= -1002081725404, 
             update_interval=2, 
             minimum_lines=1, 
             pending_logs=200000),
