@@ -22,7 +22,7 @@ from helpers.bot_utils import USERNAME
 from pyrogram.errors import BotInlineDisabled
 from config import API_ID, API_HASH, SESSION_STRING, REPLY_MESSAGE, OLD_PMS
 
-User = Client("user"
+User = Client("user",
     session_string=SESSION_STRING,
     api_id=API_ID,
     api_hash=API_HASH
