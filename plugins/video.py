@@ -98,8 +98,8 @@ async def end_callbacc(client, CallbackQuery):
     )
     await CallbackQuery.message.delete()
 
-group_c=list(map(int, getenv("group_c", "").split()))
-channal_c=list(map(int, getenv("channal_c", "").split()))
+group_c=list(map(int, os.getenv("group_c", "").split()))
+channal_c=list(map(int, os.getenv("channal_c", "").split()))
 
 @Client.on_message(filters.command(["stream", f"stream@{USERNAME}"]) & filters.group )
 @authorized_users_only
