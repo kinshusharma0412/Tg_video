@@ -98,12 +98,16 @@ async def end_callbacc(client, CallbackQuery):
     )
     await CallbackQuery.message.delete()
 
+group_c=list(map(int, getenv("group_c", "").split()))
+channal_c=list(map(int, getenv("channal_c", "").split()))
 
 @Client.on_message(filters.command(["stream", f"stream@{USERNAME}"]) & filters.group )
 @authorized_users_only
 async def stream(client, m: Message):
     msg = await m.reply_text("🔄 `Processing ...`")
     chat_id = m.chat.id
+    if m.chat.id in group_c:
+    	chat_id=channal_c[group_c.index(m.chat.id)]
     media = m.reply_to_message
     if not media and not ' ' in m.text:
         await msg.edit("❗ __Send Me An Live Stream Link / YouTube Video Link / Reply To An Video To Start Video Streaming!__")
