@@ -25,7 +25,7 @@ bot = Client(
     API_HASH,
     bot_token=BOT_TOKEN
 )
-bot.start()
-ok = bot.get_me()
-USERNAME = ok.username
-BOT_NAME = ok.first_name
+#bot.start()
+#ok = bot.get_me()
+USERNAME = "soojhboojh_bot"#ok.username
+BOT_NAME = "Soojh Boojh Bot"#ok.first_name
