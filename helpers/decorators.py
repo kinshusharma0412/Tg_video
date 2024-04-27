@@ -15,7 +15,7 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>
 """
-
+import logging
 from typing import Callable
 from pyrogram import Client
 from config import SUDO_USERS
@@ -36,6 +36,7 @@ def errors(func: Callable) -> Callable:
 def authorized_users_only(func: Callable) -> Callable:
     async def decorator(client: Client, message: Message):
         if message.from_user.id in SUDO_USERS:
+        	LOGGER.info("trying to start a video")
             return await func(client, message)
 
         administrators = await get_administrators(message.chat)
