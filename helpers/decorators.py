@@ -36,7 +36,7 @@ def errors(func: Callable) -> Callable:
 def authorized_users_only(func: Callable) -> Callable:
     async def decorator(client: Client, message: Message):
         if message.from_user.id in SUDO_USERS:
-        	LOGGER.info("trying to start a video")
+            LOGGER.info("trying to start a video")
             return await func(client, message)
 
         administrators = await get_administrators(message.chat)
