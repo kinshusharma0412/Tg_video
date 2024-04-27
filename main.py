@@ -20,7 +20,25 @@ import os
 from plugins.nopm import User
 from pyrogram import Client, idle
 from config import API_ID, API_HASH, BOT_TOKEN
+import logging
+from tglogging import TelegramLogHandler
+logging.basicConfig(
+    level=logging.INFO,
+    format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
+    datefmt='%d-%b-%y %H:%M:%S',
+    handlers=[
+        TelegramLogHandler(
+            token=BOT_TOKEN, 
+            log_chat_id= Config.LOG_CH, 
+            update_interval=2, 
+            minimum_lines=1, 
+            pending_logs=200000),
+        logging.StreamHandler()
+    ]
+)
 
+LOGGER = logging.getLogger(__name__)
+LOGGER.info("live log streaming to telegram.")
 Bot = Client(
     ":memory:",
     API_ID,
